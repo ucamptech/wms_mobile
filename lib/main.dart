@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:wms_mobile/providers/auth_provider.dart';
 import 'package:wms_mobile/utils/constants/app_colors_const.dart';
-import 'package:wms_mobile/utils/enums.dart';
+import 'package:wms_mobile/utils/enums/warehouse_op.dart';
 import 'package:wms_mobile/views/screens/home_screen.dart';
 import 'package:wms_mobile/views/screens/login_screen.dart';
 import 'package:wms_mobile/views/screens/operation_screen.dart';

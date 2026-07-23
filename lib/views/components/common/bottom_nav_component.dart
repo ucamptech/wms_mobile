@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wms_mobile/utils/constants/app_colors_const.dart';
-import 'package:wms_mobile/utils/enums.dart';
+import 'package:wms_mobile/utils/enums/app_tab.dart';
 
 class BottomNavComponent extends StatelessWidget {
   const BottomNavComponent({

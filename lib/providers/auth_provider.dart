@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wms_mobile/models/user_session.dart';
+import 'package:wms_mobile/models/user_session_model.dart';
 
 class AuthProvider extends ChangeNotifier {
-  UserSession? session;
+  UserSessionModel? session;
   bool ready = false;
   bool loading = false;
   String? error;
@@ -20,7 +20,8 @@ class AuthProvider extends ChangeNotifier {
     final raw = prefs.getString('user_session');
     if (raw != null) {
       try {
-        session = UserSession.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+        session =
+            UserSessionModel.fromJson(jsonDecode(raw) as Map<String, dynamic>);
       } catch (_) {
         await prefs.remove('user_session');
       }
@@ -44,7 +45,7 @@ class AuthProvider extends ChangeNotifier {
       return false;
     }
 
-    session = UserSession(
+    session = UserSessionModel(
       username: username.trim(),
       name: username.trim(),
       role: 'Operator',

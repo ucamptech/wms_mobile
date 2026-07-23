@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Shared app colors.
-/// Stored under utils/constants like hele_ui_01 (*_const.dart).
 class AppColorsConst {
   // Main palette (WMS UI theme)
   static const Color bg = Color(0xFF080C12);

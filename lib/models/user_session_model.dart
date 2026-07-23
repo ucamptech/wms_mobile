@@ -1,5 +1,5 @@
-class UserSession {
-  const UserSession({
+class UserSessionModel {
+  const UserSessionModel({
     required this.username,
     required this.name,
     this.role = 'Operator',
@@ -17,8 +17,8 @@ class UserSession {
     };
   }
 
-  factory UserSession.fromJson(Map<String, dynamic> json) {
-    return UserSession(
+  factory UserSessionModel.fromJson(Map<String, dynamic> json) {
+    return UserSessionModel(
       username: json['username'] as String,
       name: json['name'] as String,
       role: (json['role'] as String?) ?? 'Operator',

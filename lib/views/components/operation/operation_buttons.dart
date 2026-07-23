@@ -11,7 +11,7 @@ class OperationPrimaryButton extends StatelessWidget {
 
   final int step;
   final Color color;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   String get _label {
     if (step == 1) return 'Confirm';
@@ -21,21 +21,25 @@ class OperationPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: color,
-      borderRadius: BorderRadius.circular(16),
-      child: InkWell(
-        onTap: onPressed,
+    final enabled = onPressed != null;
+    return Opacity(
+      opacity: enabled ? 1 : 0.6,
+      child: Material(
+        color: color,
         borderRadius: BorderRadius.circular(16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Text(
-            _label,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Text(
+              _label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
           ),
         ),

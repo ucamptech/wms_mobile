@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:wms_mobile/models/operation_config.dart';
 import 'package:wms_mobile/utils/constants/app_colors_const.dart';
+import 'package:wms_mobile/views/components/operation/barcode_scanner_box.dart';
 import 'package:wms_mobile/views/components/operation/mono_label.dart';
 import 'package:wms_mobile/views/components/operation/scanner_text_field.dart';
 
 class ScanStepOne extends StatelessWidget {
   const ScanStepOne({
     super.key,
-    required this.config,
+    required this.step1Label,
+    required this.placeholder,
     required this.scanController,
+    this.onScanned,
   });
 
-  final OperationConfig config;
+  final String step1Label;
+  final String placeholder;
   final TextEditingController scanController;
+  final ValueChanged<String>? onScanned;
 
   @override
   Widget build(BuildContext context) {
@@ -20,35 +24,18 @@ class ScanStepOne extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const SizedBox(height: 20),
-        MonoLabel(config.step1Label),
+        MonoLabel(step1Label),
         const SizedBox(height: 12),
-        Container(
-          height: 176,
-          decoration: BoxDecoration(
-            color: AppColorsConst.white04,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColorsConst.white15, width: 2),
-          ),
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.qr_code_scanner_rounded, size: 38, color: AppColorsConst.white20),
-              SizedBox(height: 12),
-              Text(
-                'Point camera at barcode',
-                style: TextStyle(color: AppColorsConst.white30, fontSize: 14),
-              ),
-              SizedBox(height: 4),
-              Text(
-                'Auto-detects QR / Code128',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontFamily: 'monospace',
-                  color: AppColorsConst.white20,
-                ),
-              ),
-            ],
-          ),
+        BarcodeScannerBox(
+          onDetect: (code) {
+            if (onScanned != null) {
+              onScanned!(code);
+            } else {
+              scanController.text = code;
+              scanController.selection =
+                  TextSelection.collapsed(offset: code.length);
+            }
+          },
         ),
         const SizedBox(height: 20),
         const Row(
@@ -71,7 +58,7 @@ class ScanStepOne extends StatelessWidget {
         const SizedBox(height: 16),
         ScannerTextField(
           controller: scanController,
-          hint: config.placeholder,
+          hint: placeholder,
         ),
       ],
     );

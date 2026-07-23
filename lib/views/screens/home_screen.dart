@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wms_mobile/providers/auth_provider.dart';
 import 'package:wms_mobile/utils/constants/app_colors_const.dart';
-import 'package:wms_mobile/utils/enums.dart';
+import 'package:wms_mobile/utils/enums/app_tab.dart';
 import 'package:wms_mobile/views/components/common/app_bar_component.dart';
 import 'package:wms_mobile/views/components/common/bottom_nav_component.dart';
 import 'package:wms_mobile/views/components/home/empty_tab_component.dart';

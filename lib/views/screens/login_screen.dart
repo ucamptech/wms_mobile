@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wms_mobile/providers/auth_provider.dart';
 import 'package:wms_mobile/utils/constants/app_colors_const.dart';
+import 'package:wms_mobile/views/components/common/app_toast.dart';
 import 'package:wms_mobile/views/components/login/login_button.dart';
 import 'package:wms_mobile/views/components/login/text_field_component.dart';
 
@@ -47,12 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (success) {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColorsConst.error,
-          content: Text(auth.error ?? 'Login failed'),
-        ),
-      );
+      AppToast.error(context, auth.error ?? 'Login failed');
     }
   }
 
