@@ -1,0 +1,62 @@
+.dockerignore
+Dockerfile
+build/
+.dart_tool/
+.git/
+.github/
+.gitignore
+.packages
+
+# Flutter / Dart
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/coverage/
+app.*.symbols
+app.*.map.json
+/android/app/debug
+/android/app/profile
+/android/app/release
+.widget_preview/
+
+# Misc / OS
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+Thumbs.db
+
+# IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Android
+android/.gradle/
+android/local.properties
+android/app/build/
+
+# Other platforms
+ios/Pods/
+ios/.symlinks/
+macos/Flutter/ephemeral/
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+
+# Docker output
+apk_out/
+*.md
+docker-compose.yml
