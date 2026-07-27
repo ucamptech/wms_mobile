@@ -2,7 +2,7 @@ FROM ghcr.io/cirruslabs/flutter:stable AS build
 WORKDIR /app
 RUN yes | flutter doctor --android-licenses || true
 COPY . .
-RUN flutter pub get && flutter build apk --debug
+RUN flutter pub get && flutter build apk --release
 
 FROM alpine:3.20
 WORKDIR /apk
