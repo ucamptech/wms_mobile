@@ -2,7 +2,10 @@ name: wms_mobile
 
 services:
   build-apk:
-    build: .
+    build:
+      context: .
+      args:
+        BUILD_MODE: ${BUILD_MODE:-release}
     image: wms_mobile_apk
     container_name: wms_mobile_apk
     volumes:
